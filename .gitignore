@@ -1,0 +1,16 @@
+vd-venv
+*.
+windows
+macos
+linux
+*.yaml
+*.lock
+android
+.metadata
+web
+ios
+/Frontend/vidly/test
+/Backend/db_config.json
+*__pycache__
+./
+config

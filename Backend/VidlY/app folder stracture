@@ -1,0 +1,24 @@
+
+vidly
+|__app_api/v1/endpoints/
+|
+|__app_config/
+|
+|__app_db/
+|
+|__app_service/
+|       |___comments/
+|
+|__app_models/
+|
+|__app_schema/
+|
+|__app_tests/
+|
+|__app_utils/
+|
+|__main.py
+|
+|__requirements.txt
+|
+|__folder_structure

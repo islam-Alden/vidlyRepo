@@ -1,0 +1,7 @@
+create project folders for backend and fronted [DONE]
+create Git repo [DONE]
+create folders structure [DONE]
+install requirements [DONE]
+fetch,analyze,classify and return comments [DONE]
+validate and extract video ID from URL [DONE]
+comment all of the code related to Analysis part [DONE] 19 01 25

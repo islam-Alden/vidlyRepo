@@ -1,0 +1,4 @@
+requests
+fastapi[all]
+vaderSentiment
+psycopg2-binary
