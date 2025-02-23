@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidly/constants/app_colors.dart';
-import 'package:vidly/controller/youtube/XYoutubeController.dart';
+import 'package:vidly/controller/youtube_video_palyer_controller.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class CustomYoutubePlayer extends StatelessWidget {

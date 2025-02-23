@@ -9,117 +9,11 @@ from app_service.comments.count_classified_comments import count_comments_classi
 from app_service.comments.fetch_commets import fetch_comments
 
 
-
-
-
-# def fetch_comments(video_id, api_key):
-#     """
-#     Fetch comments from the YouTube API for a given video ID.
-#     Returns a list of comments.
-#     """
-#     base_url = "https://www.googleapis.com/youtube/v3/commentThreads"
-#     comments = []
-#     next_page_token = None
-
-#     while True:
-#         params = {
-#             "part": "snippet",
-#             "videoId": video_id,
-#             "key": api_key,
-#             "maxResults": 100,
-#             "pageToken": next_page_token,
-#         }
-
-#         try:
-#             response = requests.get(base_url, params=params)
-#             response.raise_for_status()
-#         except requests.exceptions.RequestException as e:
-#             print(f"Error fetching comments: {e}")
-#             break
-
-#         data = response.json()
-#         for item in data.get("items", []):
-#             comment = item["snippet"]["topLevelComment"]["snippet"]["textDisplay"]
-#             comments.append(comment)
-
-#         next_page_token = data.get("nextPageToken")
-#         if not next_page_token:
-#             break
-
-#     return comments
-
-
-
-# import json
-# import os
-
-# TOKEN_FILE_PATH = "/home/helen/VsPRJS/Fullstack/Mobile/VidlY/Backend/config/youtube_token.json"
-
-# def load_api_key():
-#     """Load the API key from the configuration file."""
-#     try:
-#         if not os.path.exists(TOKEN_FILE_PATH):
-#             raise FileNotFoundError(f"Token file not found: {TOKEN_FILE_PATH}")
-
-#         with open(TOKEN_FILE_PATH, 'r') as config_file:
-#             data = json.load(config_file)
-#             if 'API_KEY' not in data:
-#                 raise KeyError("'API_KEY' not found in the token file")
-#             return data['API_KEY']
-#     except FileNotFoundError as fnf_error:
-#         print(f"File Error: {fnf_error}")
-#     except KeyError as key_error:
-#         print(f"Key Error: {key_error}")
-#     except json.JSONDecodeError as json_error:
-#         print(f"JSON Error: {json_error}")
-#     except Exception as e:
-#         print(f"An unexpected error occurred: {e}")
-#     return None
-
-
-
-# router = APIRouter(prefix="/comments")
-# @router.get("/")
-# def get_comments(video_id: str):
-#     api_key = load_api_key()
-#     try:
-#         comments = fetch_comments(video_id, api_key)
-#         return {"video_id": video_id, "comments": comments}
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=f"Error fetching comments: {str(e)}")
-
-
-
-
-# router = APIRouter(prefix="/comments")
-
-# @router.get("/fetch")
-# def get_comments(video_id: str):
-#     api_key = load_api_key()
-#     try:
-#         comments = fetch_comments(video_id, api_key)
-#         return {"video_id": video_id, "comments": comments}
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=f"Error fetching comments: {str(e)}")
-
-
-
-
-# @router.post("/analyze")
-# def analyze_comments(comments: List[str]):
-#     """
-#     Analyze and classify a list of comments.
-#     """
-#     try:
-#         classification_counts = count_comments_classification(comments)
-#         return {"analysis": classification_counts}
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=f"Error analyzing comments: {str(e)}")
-
-from fastapi import APIRouter, HTTPException,Depends
+from fastapi import APIRouter, HTTPException
 
 from app_service.fetch_video_title import fetch_video_title
 from app_utils.youtube_utils import extract_video_id
+
 
 router = APIRouter(prefix="/comments")
 

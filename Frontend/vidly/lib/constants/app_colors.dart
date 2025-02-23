@@ -41,4 +41,12 @@ static const Color C_fuchsia = Color(0xFFFB4E97);
 static const Color C_deepPurple_level_2 = Color(0xFFC374EB);
 
   static const Color C_red = Color.fromARGB(255, 255, 15, 15);
+
+  static const Color C_transparent =Color.fromARGB(0, 0, 0, 0);
+
+  static const Color C_white =Color.fromARGB(255, 255, 255, 255);
+
+  static const Color C_green =Color.fromARGB(220, 23, 134, 1);
+  
+
 }

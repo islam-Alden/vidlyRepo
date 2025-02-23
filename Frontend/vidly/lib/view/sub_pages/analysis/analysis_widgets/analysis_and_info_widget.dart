@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vidly/constants/app_strings.dart';
 import 'package:vidly/utils/reuesable_widgets/custom_text_widget.dart';
-import 'package:vidly/view/sub_pages/analysis/analysis_widgets/analysis_chart_widget.dart';
 
 class AnalysisAndInfoWidget extends StatelessWidget {
 
@@ -20,18 +19,7 @@ required this.Width, required this.Height,
       padding: EdgeInsets.only(left: 6.0, right: 6.0),
       width: Width,
       height:Height,
-      // decoration: BoxDecoration(        boxShadow: [
-      //     BoxShadow(
-      //       color: Color.fromARGB(255, 148, 1, 1),  // Subtle shadow
-      //       blurRadius: 8,
-      //       offset: Offset(0, 4),
-      //     ),
-      //   ],
-      //   // Light red with transparency
-      //      borderRadius: BorderRadius.only(
-      //     topRight: Radius.circular(90), // Top-right corner rounded
-      //   ),
-      // ),
+
       child:
         Column(
           children: [

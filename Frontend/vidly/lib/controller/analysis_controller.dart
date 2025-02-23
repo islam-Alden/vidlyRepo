@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:vidly/model/analysis_model.dart';
-import 'package:vidly/serviaces/api_sevice.dart';
+import 'package:vidly/serviaces/analysis_api_sevice.dart';
 import 'package:vidly/utils/helpers/category_percentage.dart';
 
 class AnalysisController extends GetxController {
@@ -25,7 +25,7 @@ class AnalysisController extends GetxController {
       negativeComments.value = 0;
       fetchedVideoTitle.value = "";
 
-      // Fetch and analyze comments
+      // Fetch analyzed comments
       ApiService apiService = ApiService(baseUrl: 'http://127.0.0.1:8000');
       FetchCommentsRequest request = FetchCommentsRequest(url: videoUrl);
       FetchCommentsResponse? response = await apiService.fetchAndAnalyzeComments(request);

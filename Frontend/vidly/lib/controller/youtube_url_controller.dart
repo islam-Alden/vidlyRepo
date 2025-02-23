@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vidly/controller/XAnalysisController.dart';
-import 'package:vidly/controller/youtube/XYoutubeController.dart';
+import 'package:vidly/controller/analysis_controller.dart';
+import 'package:vidly/controller/youtube_video_palyer_controller.dart';
 import 'package:vidly/utils/helpers/extract_video_id.dart';
 
-class SearchBarController extends GetxController{
+class AnalysisSearchBarController extends GetxController{
 
 final formKey = GlobalKey<FormState>();
     final youtubeController = Get.put(XYoutubePlayerController());

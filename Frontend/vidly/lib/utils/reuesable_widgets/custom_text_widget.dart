@@ -48,6 +48,7 @@ class CustomText extends StatelessWidget {
               scrollAxis: Axis.horizontal,
             ),
           ): Text(
+      overflow: TextOverflow.ellipsis,
       text,
       textAlign: textAlign ?? TextAlign.start,
       style:textStyle,

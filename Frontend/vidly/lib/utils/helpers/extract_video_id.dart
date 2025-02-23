@@ -3,7 +3,7 @@
 
 String? extractVideoId(String url) {
   final pattern = RegExp(
-    r'(?:youtube\.com(?:/[^/]+)?(?:\?v=|\/)([^"&?\/\s]+)|youtu\.be\/([^"&?\/\s]+))',
+      r'(?:youtube\.com|m\.youtube\.com)(?:/[^/]+)?(?:\?v=|\/)([^"&?\/\s]+)|youtu\.be\/([^"&?\/\s]+)'
   );
   final match = pattern.firstMatch(url);
   final id = match != null ? (match.group(1) ?? match.group(2)) : null;
@@ -16,12 +16,11 @@ String? extractVideoId(String url) {
   }
 }
 
-
 String? youtubeUrlValidator(String value) {
   if (value.isEmpty) return null; // No error on empty input
 
   final RegExp youtubeRegex = RegExp(
-    r'^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})(\S*)$',
+      r'^(https?:\/\/)?(www\.|m\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})(\S*)$'
   );
 
   if (!youtubeRegex.hasMatch(value)) {

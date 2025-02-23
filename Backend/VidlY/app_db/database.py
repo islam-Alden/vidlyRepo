@@ -1,9 +1,12 @@
 import json
 import psycopg2
 
+
+db_path = "/home/helen/VsPRJS/Fullstack/Mobile/vidly/config/db_config.json"
+
 def get_db_connection():
     # Load the configuration from the JSON file
-    with open('db_config.json', 'r') as file:
+    with open(db_path, 'r') as file:
         config = json.load(file)
 
     # Connect to PostgreSQL using the loaded configuration

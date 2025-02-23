@@ -3,32 +3,35 @@ import 'package:vidly/constants/app_colors.dart';
 
 class CustomContainer extends StatelessWidget {
   final double width;
-  final double height;
+  final double? height;
   final double? borderRadius;
   final double? borderWidth;
   final Widget child;
   final Color? borderColor;
-
+  final Color? backgroundColor;
+  final double? paddingValue;
   const CustomContainer({
     Key? key,
     required this.width,
-    required this.height,
+this.height,
     this.borderRadius,
     this.borderWidth,
     this.borderColor,
-
+this.paddingValue,
     required this.child,
+     this.backgroundColor,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     
     return Container(
+    padding: EdgeInsets.all(paddingValue ?? 0),
       width: width,
       height: height,
   
       decoration: BoxDecoration(
-        color: Color.fromARGB(28, 255, 255, 255),
+        color:backgroundColor ?? AppColors.C_transparent,
         gradient: LinearGradient(
           colors: [AppColors.C_darkPurple_level_4,AppColors.C_lightPurple,],
           begin: Alignment.topCenter,

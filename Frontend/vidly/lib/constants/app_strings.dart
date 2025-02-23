@@ -13,4 +13,17 @@ class AppStrings {
   static const S_homeNavButton = "Home";
   static const S_favoriteOutlineNavButton = 'Favorite';
   static const S_analysisNavButton = "Analysis";
+
+  // Videos Search
+    static const S_videosSearchBarHint = "Search";
+    static const S_videosSearchBarLabel = "Search";
+
+    static const S_unknown = "Unknown";
+    static const S_title = "Title";
+  static const S_copy = "Copy";
+
+  static const playlistVideos = "Playlist Videos";
+
+  static const addFav = "addFav";
+
 }

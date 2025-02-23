@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:vidly/constants/app_colors.dart';
 import 'package:vidly/constants/app_icons.dart';
 import 'package:vidly/constants/app_strings.dart';
-import 'package:vidly/controller/XAnalysisController.dart';
-import 'package:vidly/controller/XYoutubeUrlController.dart';
-
-
+import 'package:vidly/controller/analysis_controller.dart';
+import 'package:vidly/controller/youtube_url_controller.dart';
 import 'package:vidly/utils/reuesable_widgets/custom_container.dart';
 import 'package:vidly/utils/reuesable_widgets/custom_search_bar.dart';
 import 'package:vidly/utils/reuesable_widgets/custom_text_widget.dart';
 import 'package:vidly/utils/reuesable_widgets/gradient_bg.dart';
 import 'package:vidly/utils/reuesable_widgets/youtube_widget.dart';
 import 'package:vidly/utils/screen_util.dart';
-
 import 'package:vidly/view/sub_pages/analysis/analysis_widgets/analysis_chart_widget.dart';
 import 'package:vidly/view/sub_pages/analysis/analysis_widgets/pie_chart_details.dart';
+
 
 class AnalysisPage extends StatelessWidget {
   const AnalysisPage({super.key});
@@ -24,10 +21,10 @@ class AnalysisPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ScreenUtil screenUtil = ScreenUtil(context);
-    // Initialize controllers
 
+    // Initialize controllers
     final analysisController = Get.put(AnalysisController());
-    final searchBarController = Get.put(SearchBarController());
+    final searchBarController = Get.put(AnalysisSearchBarController());
     final textFieldController = TextEditingController();
 
     return Scaffold(
@@ -48,8 +45,6 @@ class AnalysisPage extends StatelessWidget {
                   suffixIcon: AppIcons.I_arrowForward,
                   onSuffixIconPressed: searchBarController.onValidate
           
-          
-                
                 ),
               ),
               SizedBox(
