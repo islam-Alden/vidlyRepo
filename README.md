@@ -70,6 +70,20 @@ flutter pub add youtube_player_iframe@2.2.2
 flutter pub add d_chart@2.6.7
 flutter pub add intl@0.20.1
 ```
+
+## Usage
+**Backend:**
+
+From inside the `Backend/VidlY` directory(folder), start the server by running the following command:
+```bash
+uvicorn main:app --reload
+```
+**Frontend:**
+
+From inside the `Frontend/vidly` directory(folder), start the web server on chrome browser by running the following commend:
+```bash
+flutter run -d chrome
+```
 ## Notes
 
 - The main focus was on the backend; the frontend was implemented primarily to visually demonstrate the app's capabilities.
