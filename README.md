@@ -24,3 +24,12 @@ I built this app to transform my knowledge into a practical tool that benefits o
 - **Favorites Management:**
   - Allow users to store and delete favorite videos in a PostgreSQL database.
 
+## Technology Stack
+
+**Backend:**
+- FastAPI
+- PostgreSQL
+- YouTube API v3
+
+**Frontend:**
+- Flutter with GetX for state management
