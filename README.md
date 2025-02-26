@@ -34,6 +34,42 @@ I built this app to transform my knowledge into a practical tool that benefits o
 **Frontend:**
 - Flutter with GetX for state management
 
+**Version Information:**
+- Python: 3.12.3
+- Flutter: 3.24.0
+- Dart: 3.5.0
+- PostgreSQL (psql): 16.6
+
+## Installation Guide
+
+### 1. Clone the Repository
+
+Clone the app using the following command:
+```bash
+git clone https://github.com/islam-Alden/vidlyRepo.git
+```
+### 2. Backend Setup
+
+Install libraries using one of the following methods:
+
+Install from the file
+  ```bash
+  pip install -r requirements.txt
+```
+Install directly:
+```bash
+pip install fastapi[all] vaderSentiment psycopg2-binary httpx
+```
+### 3. Frontend (Flutter) Setup
+
+Install the necessary Flutter packages by running the following commands:
+```bash
+flutter pub add http@1.2.2
+flutter pub add get@4.6.6
+flutter pub add youtube_player_iframe@2.2.2
+flutter pub add d_chart@2.6.7
+flutter pub add intl@0.20.1
+```
 ## Notes
 
 - The main focus was on the backend; the frontend was implemented primarily to visually demonstrate the app's capabilities.
@@ -44,5 +80,3 @@ I built this app to transform my knowledge into a practical tool that benefits o
   - Search for channels
   - Search for specific languages (requires additional engineering and workarounds)
   - Fetch more detailed information about videos
-
-
