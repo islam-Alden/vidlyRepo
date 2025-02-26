@@ -78,6 +78,12 @@ From inside the `Backend/VidlY` directory(folder), start the server by running t
 ```bash
 uvicorn main:app --reload
 ```
+
+Once the server is started,paste the URL below into your browser to start interacting with the app endpoints:
+```bash
+http://127.0.0.1:8000/docs#/.
+```
+ 
 **Frontend:**
 
 From inside the `Frontend/vidly` directory(folder), start the web server on chrome browser by running the following commend:
