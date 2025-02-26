@@ -24,7 +24,7 @@ I built this app to transform my knowledge into a practical tool that benefits o
 - **Favorites Management:**
   - Allow users to store and delete favorite videos in a PostgreSQL database.
 
-## Technology Stack
+## Tech-Stack
 
 **Backend:**
 - FastAPI
@@ -33,3 +33,16 @@ I built this app to transform my knowledge into a practical tool that benefits o
 
 **Frontend:**
 - Flutter with GetX for state management
+
+## Notes
+
+- The main focus was on the backend; the frontend was implemented primarily to visually demonstrate the app's capabilities.
+- You can test the app endpoints on your local machine via localhost using the uvicorn server. Once running, you can access the FastAPI docs at [http://127.0.0.1:8000/docs#/](http://127.0.0.1:8000/docs#/).
+- Due to the nature of the app, a login system has not been implemented.
+- Additional features can be explored using the YouTube API v3, such as:
+  - Search by region
+  - Search for channels
+  - Search for specific languages (requires additional engineering and workarounds)
+  - Fetch more detailed information about videos
+
+
