@@ -59,7 +59,7 @@ class VideosPage extends StatelessWidget {
                     validator: videosController.validateSearchQuery,
                     onChanged: (value) => videosController.searchQuery.value =
                         value, // Update GetX variable
-                    prefixIcon: AppIcons.I_linkIcon,
+                      prefixIcon: AppIcons.I_Search,
                     textFieldLabel: AppStrings.S_videosSearchBarLabel,
                     textFieldHint: AppStrings.S_videosSearchBarHint,
                     suffixIcon: AppIcons.I_arrowForward,

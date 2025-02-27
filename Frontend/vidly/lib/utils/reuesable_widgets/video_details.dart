@@ -79,7 +79,7 @@ final IconData? actionButtonIcon;
                         // Only show the add favorite button if onAddFavPressed is provided.
                         if (onActionButtonPressed != null)
                           GestureDetector(
-                            child:Icon(actionButtonIcon, size: 35,),
+                            child:Icon(actionButtonIcon, size: 28,color: AppColors.C_lightPurple,),
                           
                             onTap: onActionButtonPressed,
                           ),

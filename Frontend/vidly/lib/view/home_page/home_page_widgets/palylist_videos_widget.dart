@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 import 'package:vidly/constants/app_colors.dart';
 import 'package:vidly/constants/app_icons.dart';
 import 'package:vidly/constants/app_strings.dart';
+import 'package:vidly/controller/favorite_videos_controller.dart';
 import 'package:vidly/controller/playlitst_videos_controller.dart';
 import 'package:vidly/controller/youtube_video_palyer_controller.dart';
+import 'package:vidly/utils/helpers/snack_bar.dart';
 import 'package:vidly/utils/reuesable_widgets/custom_container.dart';
 import 'package:vidly/utils/reuesable_widgets/custom_text_widget.dart';
 import 'package:vidly/utils/reuesable_widgets/video_details.dart';
@@ -23,6 +25,7 @@ class PlaylistVideosBottomSheet extends StatelessWidget {
     final PlaylistVideosController controller =
         Get.put(PlaylistVideosController());
     final youtubeController = Get.put(XYoutubePlayerController());
+        final favoriteVideosController = Get.put(FavoriteVideosController());
     final ScreenUtil screenUtil = ScreenUtil(context);
     // Fetch playlist videos when the widget is built.
     controller.fetchPlaylistVideos(playlistId);
@@ -98,7 +101,7 @@ class PlaylistVideosBottomSheet extends StatelessWidget {
                               videoDate: video["publish_date"],
                               videoLength: video["duration"],
                               copy: AppStrings.S_copy,
-                              // onActionButtonPressed: (){print("added to Favorite");},
+  
                               onCopyButtonPressed: () {
                                 Clipboard.setData(
                                     ClipboardData(text: video["video_link"]));
@@ -125,7 +128,30 @@ class PlaylistVideosBottomSheet extends StatelessWidget {
                                 // Optionally, dismiss the bottom sheet after playing a video.
                                 Get.back();
                               },
+                                                                   onActionButtonPressed: () {
+                                            favoriteVideosController
+                                                .addFavoriteVideo(
+                                                    videoId: video["video_id"],
+                                                    title: video['title'],
+                                                    channel: video['channel'],
+                                                    thumbnail:
+                                                        video["thumbnail"],
+                                                        // the date value is fake and just for test
+                                                        // because the publish_date is not included 
+                                                        // so the stored value is always "01 01 2025"
+                                                    publishDate:
+                                                        video["publish_date"] ??"01 01 2025",
+                                                    duration: video["duration"] ?? "Unknown",
+                                                    videoLink:
+                                                        video["video_link"]);
 
+                                            customSnackBar(
+                                                "Added!",
+                                                "Added to Favorite.",
+                                                AppColors.C_green,
+                                                AppColors.C_white);
+                                          },
+                                          actionButtonIcon: AppIcons.I_favorite,
                             )),
                       );
                     },

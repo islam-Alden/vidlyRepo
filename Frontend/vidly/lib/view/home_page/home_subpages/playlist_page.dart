@@ -46,7 +46,7 @@ final textFieldController = TextEditingController();
                       onChanged: (value) => playlistsController
                           .searchQuery.value = value // Update GetX variable
                       ,
-                      prefixIcon: AppIcons.I_linkIcon,
+                      prefixIcon: AppIcons.I_Search,
                       textFieldLabel: AppStrings.S_videosSearchBarLabel,
                       textFieldHint: AppStrings.S_videosSearchBarHint,
                       suffixIcon: AppIcons.I_arrowForward,
@@ -150,12 +150,12 @@ final textFieldController = TextEditingController();
                                       playlistsController.videoTitle.value =
                                           playlist['title'];
 
-                                      // Open the bottom sheet with an expandable (draggable) mechanism.
+                                   
                                       Get.bottomSheet(
                                         PlaylistVideosBottomSheet(
                                           playlistId: playlist["playlist_id"],
                                         ),
-                                        // Set backgroundColor to transparent to show rounded corners.
+                                 
                                         backgroundColor: Colors.transparent,
                                         isScrollControlled: true,
                                       );

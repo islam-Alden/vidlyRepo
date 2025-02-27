@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
 
 debugShowCheckedModeBanner: false,
-      home:  RootPage() //SearchFieldValidation(),
+      home:  RootPage() 
     );
   }
 }
