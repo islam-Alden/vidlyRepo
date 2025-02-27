@@ -19,18 +19,19 @@ def get_db_connection():
     )
     return conn
 
-# Example usage
-if __name__ == "__main__":
-    conn = get_db_connection()
-    cur = conn.cursor()
 
-    # Execute a query
-    cur.execute("SELECT version()")
+# # Example usage
+# if __name__ == "__main__":
+#     conn = get_db_connection()
+#     cur = conn.cursor()
 
-    # Fetch the result
-    db_version = cur.fetchone()
-    print(f"Database version: {db_version}")
+#     # Execute a query
+#     cur.execute("SELECT version()")
 
-    # Close the cursor and connection
-    cur.close()
-    conn.close()
+#     # Fetch the result
+#     db_version = cur.fetchone()
+#     print(f"Database version: {db_version}")
+
+#     # Close the cursor and connection
+#     cur.close()
+#     conn.close()

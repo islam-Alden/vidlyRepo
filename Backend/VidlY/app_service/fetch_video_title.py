@@ -40,13 +40,3 @@ def fetch_video_title(video_id, api_key):
         # Handle any errors that occur during the request
         print(f"Error fetching video title: {e}")
         return None
-
-# Example usage
-video_id = "YOUR_VIDEO_ID"
-api_key = "YOUR_API_KEY"
-title = fetch_video_title(video_id, api_key)
-
-if title:
-    print(f"Video Title: {title}")
-else:
-    print("Failed to fetch video title.")

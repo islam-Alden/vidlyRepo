@@ -11,7 +11,7 @@ class LiveStreamApiService {
   Future<FetchLiveStreamsResponse> fetchLiveStreamsService(
       FetchLiveStreamsRequest request) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/videos/fetch_live_streams'),
+      Uri.parse('$baseUrl/v1/videos/live_streams/fetch'),
       headers: {'Content-Type': 'application/json'},
       body: json.encode(request.toJson()),
     );

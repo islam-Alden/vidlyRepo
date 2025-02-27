@@ -119,54 +119,50 @@ class LiveStreamPage extends StatelessWidget {
                     width: screenUtil.scaleWidth(0.95),
                     height: screenUtil.scaleHeight(0.36),
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SizedBox(
-                        width: screenUtil.scaleWidth(0.2),
-                        height: screenUtil.scaleHeight(0.2),
-                        child: Obx(() {
-                          if (liveStreamsController.isLoading.value) {
-                            return Center(child: CircularProgressIndicator());
-                          }
-                          if (liveStreamsController.videosList.isEmpty) {
-                            return Center(child: CustomText(text:"No videos found.", color: AppColors.C_purple,));
-                          }
-                          return ListView.builder(
-                              itemCount: liveStreamsController.videosList.length,
-                              itemBuilder: (context, index) {
-                                var video = liveStreamsController.videosList[index];
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: CustomContainer(
-                                      width: screenUtil.scaleWidth(0.55),
-                                      height: screenUtil.scaleHeight(0.14),
-                                      child: VideoDetailsWidget(
-                                        imagePath: video["thumbnail"],
-                                        videoTitle: video['title'],
-                                        channelName: video['channel'],
-                                        copy: AppStrings.S_copy,
-                                        onCopyButtonPressed: () {
-                                          Clipboard.setData(ClipboardData(text: video["live_link"]));
-                                          Get.snackbar(
-                                            "Copied!",
-                                            "Copied to clipboard.",
-                                            snackPosition: SnackPosition.TOP, // Shows snackbar at the bottom
-                                            backgroundColor: Colors.green,
-                                            colorText: Colors.white,
-                                            duration: Duration(seconds: 2),
-                                          );
-
-                                        }, onThumbnailPressed: () { 
-                                          youtubeController.changeVideo("https://youtu.be/${video["video_id"]}");
-                
-                                          liveStreamsController.videoTitle.value = video['title'];
-                                      },
-
-                                      )),
-                                );
-                       
-                              });
-                        }),
-                      ),
+                      padding: const EdgeInsets.all(6.0),
+                      child: Obx(() {
+                        if (liveStreamsController.isLoading.value) {
+                          return Center(child: CircularProgressIndicator());
+                        }
+                        if (liveStreamsController.videosList.isEmpty) {
+                          return Center(child: CustomText(text:"No videos found.", color: AppColors.C_purple,));
+                        }
+                        return ListView.builder(
+                            itemCount: liveStreamsController.videosList.length,
+                            itemBuilder: (context, index) {
+                              var video = liveStreamsController.videosList[index];
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: CustomContainer(
+                                    width: screenUtil.scaleWidth(0.58),
+                                    height: screenUtil.scaleHeight(0.14),
+                                    child: VideoDetailsWidget(
+                                      imagePath: video["thumbnail"],
+                                      videoTitle: video['title'],
+                                      channelName: video['channel'],
+                                      copy: AppStrings.S_copy,
+                                      onCopyButtonPressed: () {
+                                        Clipboard.setData(ClipboardData(text: video["live_link"]));
+                                        Get.snackbar(
+                                          "Copied!",
+                                          "Copied to clipboard.",
+                                          snackPosition: SnackPosition.TOP, // Shows snackbar at the bottom
+                                          backgroundColor: Colors.green,
+                                          colorText: Colors.white,
+                                          duration: Duration(seconds: 2),
+                                        );
+                      
+                                      }, onThumbnailPressed: () { 
+                                        youtubeController.changeVideo("https://youtu.be/${video["video_id"]}");
+                                      
+                                        liveStreamsController.videoTitle.value = video['title'];
+                                    },
+                      
+                                    )),
+                              );
+                                             
+                            });
+                      }),
                     ))
               ],
             );

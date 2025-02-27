@@ -12,7 +12,6 @@ class FetchPlaylistRequest(BaseModel):
         if not v.strip():
             raise ValueError("Query cannot be empty")
         
-        # Optional: Ensure the query only contains alphanumeric and space characters
         if not re.match(r'^[a-zA-Z0-9\s]*$', v):
             raise ValueError("Query can only contain alphanumeric characters and spaces.")
         

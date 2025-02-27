@@ -11,7 +11,7 @@ class VideoApiService {
   Future<FetchVideosResponse> fetchVideosService(
       FetchVideosRequest request) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/videos/fetch'),
+      Uri.parse('$baseUrl/v1/videos/normal/fetch'),
       headers: {'Content-Type': 'application/json'},
       body: json.encode(request.toJson()),
     );

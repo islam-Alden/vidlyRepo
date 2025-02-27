@@ -10,7 +10,7 @@ class ApiService {
   Future<FetchCommentsResponse> fetchAndAnalyzeComments(
       FetchCommentsRequest request) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/comments/fetch'),
+      Uri.parse('$baseUrl/v1/comments/fetch'),
       headers: {'Content-Type': 'application/json'},
       body: json.encode(request.toJson()),
     );

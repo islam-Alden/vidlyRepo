@@ -9,7 +9,7 @@ class FavoriteVideosApiService {
 
   Future<FetchFavoriteVideosResponse> fetchFavoriteVideosService() async {
     final response = await http.get(
-      Uri.parse('$baseUrl/videos/favorite/fetch'),
+      Uri.parse('$baseUrl/v1/videos/favorites/fetch'),
 );
 
     if (response.statusCode == 200) {
@@ -29,7 +29,7 @@ class FavoriteVideosDeleteApiService {
 
   Future<DeleteFavoriteVideoResponse> deleteFavoriteVideosService(DeleteFavoriteVideoRequest request) async {
     final response = await http.delete(
-      Uri.parse('$baseUrl/videos/favorite/delete'),
+      Uri.parse('$baseUrl/v1/videos/favorites/delete'),
             headers: {
         'Content-Type': 'application/json',
       },
@@ -56,7 +56,7 @@ class FavoriteVideosAddApiService {
     final List<Map<String, dynamic>> requestBody = [video.toJson()];
 
     final response = await http.post(
-      Uri.parse('$baseUrl/videos/favorite/insert'), 
+      Uri.parse('$baseUrl/v1/videos/favorites/insert'), 
       headers: {'Content-Type': 'application/json'},
       body: json.encode(requestBody),
     );

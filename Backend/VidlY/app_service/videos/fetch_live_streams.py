@@ -1,39 +1,8 @@
-import isodate
-import requests
-from datetime import datetime, timedelta
-
-
-import json
-import os
-
-TOKEN_FILE_PATH = "/home/helen/VsPRJS/Fullstack/Mobile/vidly/config/youtube_token.json"
-
-def load_api_key():
-    """Load the API key from the configuration file."""
-    try:
-        if not os.path.exists(TOKEN_FILE_PATH):
-            raise FileNotFoundError(f"Token file not found: {TOKEN_FILE_PATH}")
-
-        with open(TOKEN_FILE_PATH, 'r') as config_file:
-            data = json.load(config_file)
-            if 'API_KEY' not in data:
-                raise KeyError("'API_KEY' not found in the token file")
-            return data['API_KEY']
-    except FileNotFoundError as fnf_error:
-        print(f"File Error: {fnf_error}")
-    except KeyError as key_error:
-        print(f"Key Error: {key_error}")
-    except json.JSONDecodeError as json_error:
-        print(f"JSON Error: {json_error}")
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
-    return None
-
-
-API_KEY = load_api_key()
 
 import requests
 from datetime import datetime, timedelta
+
+from app_config.youtube_token_manger import load_api_key
 
 
 SEARCH_URL = "https://www.googleapis.com/youtube/v3/search"
@@ -94,12 +63,13 @@ def search_live_streams(query, eventType, time_range, api_key):
         return {"error": f"Unexpected error: {e}"}
 
 
+
 def fetch_video_details(video_ids):
     """Fetches video details including scheduled start time."""
     params = {
         "part": "snippet,liveStreamingDetails",
         "id": ",".join(video_ids),
-        "key": API_KEY
+        "key": load_api_key()
     }
 
     try:
@@ -124,6 +94,9 @@ def fetch_video_details(video_ids):
         return result
     except requests.exceptions.RequestException:
         return []
+    
+    except KeyError as e:
+        return {"error": f"Missing key {e} in response data"}
 
 
 def filter_upcoming_streams(video_ids, days_ahead):
@@ -154,15 +127,3 @@ def format_video_data(items):
         for item in items
     ]
 
-
-
-
-# Test the function
-# results = search_live_streams(SEARCH_QUERY,eventType="upcoming", category_id=category,)
-# print(results)
-# # for video in results:
-# #     print(f'{video} ======== \n')
-
-# ucoming = search_live_streams("tech", eventType="upcoming", time_range="today")
-
-# print(ucoming)

@@ -8,7 +8,7 @@ class FavoriteVideoAddRequest(BaseModel):
     title: str
     channel: str
     thumbnail: str
-    publish_date: str  # We'll parse this in the insert function
+    publish_date: str  
     duration: str
     video_link: str
 

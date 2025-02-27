@@ -4,7 +4,7 @@ import re
 
 class FetchVideosRequest(BaseModel):
     query: str
-    category_ids: Optional[List[int]] = None  # No default, user must specify if they want categories
+    category_ids: Optional[List[int]] = None  
 
 
     # Validator to check the query string

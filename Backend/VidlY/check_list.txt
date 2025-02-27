@@ -1,0 +1,13 @@
+fetch normal videos [working]
+fetch live stream normal [working]
+fetch live stream upcoming [working]
+fetch favorite videos [working]
+delete favorite video [working]
+insert favorite video [working]
+fetch playlist [working]
+fetch playlist videos [working]
+fetch and analyze comments [working]
+All of the 9 endpoints are working well in the normal test
+fix comments long time processing [Done] ** from 04m:43s:88ms to 00:21s:50ms: for 7839 comments **
+later will be doing the security test 
+

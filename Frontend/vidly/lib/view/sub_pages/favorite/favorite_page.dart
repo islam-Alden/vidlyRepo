@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vidly/constants/app_icons.dart';
 import 'package:vidly/controller/favorite_videos_controller.dart';
 import 'package:vidly/utils/reuesable_widgets/custom_text_widget.dart';
 import 'package:get/get.dart';
@@ -89,7 +90,7 @@ class _FavoritePageState extends State<FavoritePage> {
                 ),
                 CustomContainer(
                     width: screenUtil.scaleWidth(0.95),
-                    height: screenUtil.scaleHeight(0.36),
+                    height: screenUtil.scaleHeight(0.48),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: SizedBox(
@@ -106,7 +107,7 @@ class _FavoritePageState extends State<FavoritePage> {
                               color: AppColors.C_purple,
                             ));
                           }
-
+                
                           return ListView.builder(
                               itemCount:
                                   favoriteVideosController.videosList.length,
@@ -141,7 +142,7 @@ class _FavoritePageState extends State<FavoritePage> {
                                         onThumbnailPressed: () {
                                           youtubeController.changeVideo(
                                               "https://youtu.be/${video["video_id"]}");
-
+                
                                           favoriteVideosController.videoTitle
                                               .value = video['title'];
                                         },
@@ -150,6 +151,7 @@ class _FavoritePageState extends State<FavoritePage> {
                                               .deleteFavoriteVideo(
                                                   video["video_id"]);
                                         },
+                                        actionButtonIcon: AppIcons.I_delete,
                                       )),
                                 );
                               });

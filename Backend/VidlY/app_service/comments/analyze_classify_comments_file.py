@@ -4,6 +4,9 @@
 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
+# Create a global analyzer instance once
+analyzer = SentimentIntensityAnalyzer()
+
 def analyze_classify_comment(comment):
     """
     Analyzes the sentiment of a given comment and classifies it into categories:
@@ -18,18 +21,13 @@ def analyze_classify_comment(comment):
         str: The sentiment category ('Positive', 'Neutral', 'Negative') or 'Invalid Comment' if the input is invalid.
     """
 
-    # Check for empty or non-text comments
     if not comment or not isinstance(comment, str):
-        return "Invalid Comment"  # Return an error message for empty or invalid comments
+        return "Invalid Comment"
 
-    # Create a Sentiment Intensity Analyzer object
-    analyzer = SentimentIntensityAnalyzer()
-
-    # Compute the sentiment scores for the comment
+    
     sentiment_score = analyzer.polarity_scores(comment)
     compound_score = sentiment_score['compound']
 
-    # Classify the sentiment based on the compound score
     if compound_score >= 0.05:
         return "Positive"
     elif compound_score <= -0.05:

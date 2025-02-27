@@ -13,7 +13,7 @@ class PlaylistsApiService {
   Future<FetchPlaylistsResponse> fetchPlaylistsService(
       FetchPlaylistsRequest request) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/videos/fetch_playlists'),
+      Uri.parse('$baseUrl/v1/playlists/fetch_playlists'),
       headers: {'Content-Type': 'application/json'},
       body: json.encode(request.toJson()),
     );
@@ -26,6 +26,7 @@ class PlaylistsApiService {
   }
 }
 
+
 class PlaylistVideosApiService {
   final String baseUrl;
 
@@ -34,7 +35,7 @@ class PlaylistVideosApiService {
   Future<FetchPlaylistVideosResponse> fetchPlaylistVideosService(
       FetchPlaylistVideosRequest request) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/videos/fetch_playlist_videos'),
+      Uri.parse('$baseUrl/v1/playlists/fetch_playlist_videos'),
       headers: {'Content-Type': 'application/json'},
       body: json.encode(request.toJson()),
     );

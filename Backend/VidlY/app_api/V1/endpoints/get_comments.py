@@ -1,38 +1,47 @@
-from typing import List
-from fastapi import FastAPI, HTTPException
-from fastapi import APIRouter
-import requests
 
+import asyncio
+import concurrent
+import concurrent.futures
+from fastapi import APIRouter, HTTPException
 from app_config.youtube_token_manger import load_api_key
 from app_models.comments_models import FetchCommentsRequest
 from app_service.comments.count_classified_comments import count_comments_classification
 from app_service.comments.fetch_commets import fetch_comments
-
-
-from fastapi import APIRouter, HTTPException
-
 from app_service.fetch_video_title import fetch_video_title
 from app_utils.youtube_utils import extract_video_id
 
 
-router = APIRouter(prefix="/comments")
+router = APIRouter(prefix="/v1/comments", tags=["Comments"])
 
+api_key = load_api_key()
 
 @router.post("/fetch")
-def fetch_and_analyze_comments(request: FetchCommentsRequest):
+async def fetch_and_analyze_comments(request: FetchCommentsRequest):
     """
-    This endpoint fetches comments for a given YouTube video URL, analyzes them for sentiment,
-    classifies them into positive, neutral, or negative categories, and returns the results.
+    Fetches and analyzes YouTube video comments.
+
+    This endpoint extracts the video ID from the provided YouTube URL, retrieves comments using 
+    the YouTube API, analyzes their sentiment, and categorizes them into positive, neutral, 
+    or negative classifications.
 
     Arguments:
-        request (FetchCommentsRequest): The request object containing the YouTube URL for the video.
+        request (FetchCommentsRequest): The request object containing the YouTube video URL.
 
     Returns:
-        dict: A dictionary containing the video ID, number of fetched comments, classification counts, 
-              and the comments themselves.
+        dict: A dictionary containing:
+            - video_id (str): The extracted video ID.
+            - video_title (str): The title of the YouTube video.
+            - comments_fetched (int): The number of comments retrieved.
+            - classification_counts (dict): A breakdown of sentiment classifications 
+              (positive, neutral, negative).
+            - comments (list, optional): The list of retrieved comments (commented out for now).
+
+    Raises:
+        HTTPException: If an error occurs during processing, such as an invalid URL 
+        or API request failure.
     """
-    # Load the API key from a secure location (e.g., environment variables or a config file)
-    api_key = load_api_key()
+ 
+ 
     
     try:
         # Convert the URL to a string and extract the video ID from the provided URL
@@ -40,10 +49,14 @@ def fetch_and_analyze_comments(request: FetchCommentsRequest):
         video_id = extract_video_id(url)
 
         # Fetch the comments from YouTube using the video ID and API key
-        comments = fetch_comments(video_id, api_key)
+        comments = await fetch_comments(video_id, api_key)
+
         video_title = fetch_video_title(video_id, api_key)
-        # Analyze and classify the fetched comments (e.g., positive, negative, neutral)
-        classification_counts = count_comments_classification(comments)
+
+ 
+        loop = asyncio.get_running_loop()
+        with concurrent.futures.ProcessPoolExecutor(max_workers=16) as executor:
+            classification_counts = await loop.run_in_executor(executor,count_comments_classification, comments ) 
 
         # Return the results including the video ID, the number of fetched comments,
         # the classification counts (positive, negative, neutral), and the actual comments
@@ -62,3 +75,5 @@ def fetch_and_analyze_comments(request: FetchCommentsRequest):
     except Exception as e:
         # If any other exception occurs (e.g., parsing error, processing error), return a 500 error
         raise HTTPException(status_code=500, detail=f"Error processing request: {str(e)}")
+
+

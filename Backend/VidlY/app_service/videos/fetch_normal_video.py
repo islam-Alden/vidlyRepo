@@ -3,49 +3,8 @@ import requests
 
 from app_utils.formatting_utils import format_date, format_duration
 
-# TOKEN_FILE_PATH = "/home/helen/VsPRJS/Fullstack/Mobile/vidly/config/youtube_token.json"
-
-# def load_api_key():
-#     """Load the API key from the configuration file."""
-#     try:
-#         if not os.path.exists(TOKEN_FILE_PATH):
-#             raise FileNotFoundError(f"Token file not found: {TOKEN_FILE_PATH}")
-
-#         with open(TOKEN_FILE_PATH, 'r') as config_file:
-#             data = json.load(config_file)
-#             if 'API_KEY' not in data:
-#                 raise KeyError("'API_KEY' not found in the token file")
-#             return data['API_KEY']
-#     except FileNotFoundError as fnf_error:
-#         print(f"File Error: {fnf_error}")
-#     except KeyError as key_error:
-#         print(f"Key Error: {key_error}")
-#     except json.JSONDecodeError as json_error:
-#         print(f"JSON Error: {json_error}")
-#     except Exception as e:
-#         print(f"An unexpected error occurred: {e}")
-#     return None
-
-
-# API_KEY = load_api_key()
-# SEARCH_QUERY = "programming"
-
-MAX_RESULTS = 10  # Total number of videos you want
+MAX_RESULTS = 50  # Total number of videos you want
 VIDEOS_PER_PAGE = 10  # Max per request
-
-# category_id = [27,28,10]  
-
-# # Helper function to format ISO 8601 duration to a readable format
-# def format_duration(duration_str: str) -> str:
-#     """Converts ISO 8601 duration to a human-readable format (HH:MM:SS)"""
-#     return str(isodate.parse_duration(duration_str))
-
-# # Helper function to format ISO 8601 date to dd mm yyyy
-# def format_date(date_str: str) -> str:
-#     """Converts ISO 8601 date to a formatted string (dd mm yyyy)"""
-#     publish_date = datetime.fromisoformat(date_str[:-1])  # Remove 'Z' at the end
-#     return publish_date.strftime("%d %m %Y")  # Desired format: dd mm yyyy
-
 
 
 
@@ -127,6 +86,3 @@ def fetch_videos(query: str, categoryID: list, api_key):
     except Exception as e:
         print(f"Error: {e}")
         return None
-
-# videos = fetch_videos(SEARCH_QUERY, category_id,API_KEY)
-# print(videos)
