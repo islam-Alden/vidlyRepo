@@ -92,8 +92,9 @@ flutter run -d chrome
 ```
 ## Notes
 
+- You need to obtain your API key from google console
+- You need to setup your PostgreSQL database properly, then connect it to the app
 - The main focus was on the backend; the frontend was implemented primarily to visually demonstrate the app's capabilities.
-- You can test the app endpoints on your local machine via localhost using the uvicorn server. Once running, you can access the FastAPI docs at (http://127.0.0.1:8000/docs#/).
 - Due to the nature of the app, a login system has not been implemented.
 - Additional features can be explored using the YouTube API v3, such as:
   - Search by region
