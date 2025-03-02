@@ -11,7 +11,7 @@ def fetch_playlists(query, api_key):
         "part": "snippet",
         "q": query,
         "type": "playlist",
-        "maxResults": 50,
+        "maxResults": 30, # you can adjust the number 
         "key": api_key
     }
     try:
@@ -42,7 +42,7 @@ def fetch_videos_from_playlist(playlist_id, api_key):
     params = {
         "part": "snippet",
         "playlistId": playlist_id,
-        "maxResults": 50,
+        "maxResults": 30,
         "key": api_key
     }
     response = requests.get(PLAYLIST_ITEMS_URL, params=params)

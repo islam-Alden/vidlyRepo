@@ -1,5 +1,5 @@
 import httpx
-import requests
+
 
 async def fetch_comments(video_id, api_key):
     """

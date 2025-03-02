@@ -32,7 +32,7 @@ def search_live_streams(query, eventType, time_range, api_key):
         "eventType": eventType,  
         "q": query,
         # "videoCategoryId": category_id,
-        "maxResults": 50,
+        "maxResults": 30, # you can adjust the number
         "key": api_key
     }
 

@@ -23,7 +23,7 @@ class FetchVideosRequest(BaseModel):
     # Validator to check category_ids are valid
     @field_validator('category_ids')
     def validate_category_ids(cls, v):
-        if not all(isinstance(id, int) and id > 0 for id in v):
+        if not all(isinstance(id, int) and id > 0 and id  for id in v):
             raise ValueError("Each category ID should be a positive integer")
         return v
 

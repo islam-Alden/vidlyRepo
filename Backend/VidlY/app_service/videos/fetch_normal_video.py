@@ -3,8 +3,8 @@ import requests
 
 from app_utils.formatting_utils import format_date, format_duration
 
-MAX_RESULTS = 50  # Total number of videos you want
-VIDEOS_PER_PAGE = 10  # Max per request
+MAX_RESULTS = 30  # Total number of videos you want
+VIDEOS_PER_PAGE = 30  # Max per request
 
 
 
